@@ -4,12 +4,13 @@ btns.forEach(btn=>{
     btn.addEventListener('click',()=>{
     // console.log("clicked")
     if(valueO){
-        btn.innerText="X"
+        btn.innerHTML="X"
         valueO=false
     }
     else{
-        btn.innerText="O"
+        btn.innerHTML="O"
         valueO=true
     }
+    btn.disabled="true"
 })
 })
