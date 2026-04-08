@@ -45,13 +45,12 @@ const checkWinner = () => {
                 })
             }
         }
-
     }
 }
 
 const resetGame = () => {
-
     btns.forEach(btn => {
+        btn.disabled = false
         btn.innerText = ""
     })
     winnerText.innerText=""
