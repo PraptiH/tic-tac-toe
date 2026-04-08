@@ -2,6 +2,7 @@ let btns = document.querySelectorAll('.btn')
 let winnerText = document.getElementById('winnerText')
 let resetBtn = document.getElementById("resetBtn")
 let valueO = true
+let valueCount = 0
 let winPattern = [
     [0, 1, 2],
     [0, 3, 6],
@@ -17,16 +18,21 @@ btns.forEach(btn => {
     btn.addEventListener('click', () => {
         if (valueO) {
             btn.innerText = "X"
-            btn.style.color="red"
+            btn.style.color = "red"
             valueO = false
         }
         else {
             btn.innerText = "O"
-            btn.style.color="black"
+            btn.style.color = "black"
             valueO = true
         }
         btn.disabled = "true"
+        valueCount++
+        if (valueCount === 9) {
+            
+            winnerText.innerText = `It's a draw`
 
+        }
         checkWinner()
     })
 })
@@ -45,6 +51,7 @@ const checkWinner = () => {
                 })
             }
         }
+
     }
 }
 
@@ -53,6 +60,7 @@ const resetGame = () => {
         btn.disabled = false
         btn.innerText = ""
     })
-    winnerText.innerText=""
+    valueCount=0
+    winnerText.innerText = ""
 }
-resetBtn.addEventListener("click",resetGame)
+resetBtn.addEventListener("click", resetGame)
