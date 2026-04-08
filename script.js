@@ -1,4 +1,5 @@
 let btns = document.querySelectorAll('.btn')
+let winnerText =document.getElementById('winnerText')
 let valueO = true
 let winPattern = [
     [0, 1, 2],
@@ -33,12 +34,13 @@ const checkWinner = () => {
         let val1 = btns[pattern[0]].innerText
         let val2 = btns[pattern[1]].innerText
         let val3 = btns[pattern[2]].innerText
-        console.log(val1, val2, val3)
-       if (val1 != "" && val2 != "" && val3 != "") {
-                if (val1 === val2 && val2 === val3) {
-                    console.log("winner")
-                }
+
+        if (val1 != "" && val2 != "" && val3 != "") {
+            if (val1 === val2 && val2 === val3) {
+                winnerText.innerText = `Congrats!!! The winner is ${val1}`
+                console.log("winner")
             }
+        }
 
     }
 
