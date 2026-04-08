@@ -1,5 +1,6 @@
 let btns = document.querySelectorAll('.btn')
-let winnerText =document.getElementById('winnerText')
+let winnerText = document.getElementById('winnerText')
+let resetBtn = document.getElementById("resetBtn")
 let valueO = true
 let winPattern = [
     [0, 1, 2],
@@ -14,13 +15,14 @@ let winPattern = [
 
 btns.forEach(btn => {
     btn.addEventListener('click', () => {
-        // console.log("clicked")
         if (valueO) {
             btn.innerText = "X"
+            btn.style.color="red"
             valueO = false
         }
         else {
             btn.innerText = "O"
+            btn.style.color="black"
             valueO = true
         }
         btn.disabled = "true"
@@ -38,10 +40,20 @@ const checkWinner = () => {
         if (val1 != "" && val2 != "" && val3 != "") {
             if (val1 === val2 && val2 === val3) {
                 winnerText.innerText = `Congrats!!! The winner is ${val1}`
-                console.log("winner")
+                btns.forEach(btn => {
+                    btn.disabled = "true"
+                })
             }
         }
 
     }
-
 }
+
+const resetGame = () => {
+
+    btns.forEach(btn => {
+        btn.innerText = ""
+    })
+    winnerText.innerText=""
+}
+resetBtn.addEventListener("click",resetGame)
